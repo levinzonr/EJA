@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/notebookListFragment">
+
+    <fragment
+        android:id="@+id/notebookListFragment"
+        android:name="cz.levinzonr.ezpad.ui.main.NotebookListFragment"
+        android:label="notebooklist_fragment"
+        tools:layout="@layout/notebooklist_fragment" >
+        <action
+            android:id="@+id/action_notebookListFragment_to_noteListFragment"
+            app:destination="@id/noteListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="cz.levinzonr.ezpad.ui.notelist.NoteListFragment"
+        android:label="note_list_fragment"
+        tools:layout="@layout/note_list_fragment" >
+        <argument
+            android:name="notebookId"
+            android:defaultValue="-1"
+            app:type="integer" />
+        <action
+            android:id="@+id/action_noteListFragment_to_noteDetailFragment"
+            app:destination="@id/noteDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="cz.levinzonr.ezpad.ui.notedetail.NoteDetailFragment"
+        android:label="fragment_note_detail"
+        tools:layout="@layout/fragment_note_detail" >
+        <argument
+            app:type="parcelable"
+            android:name="Note"
+            android:defaultValue="null" />
+    </fragment>
+</navigation>
